@@ -1,34 +1,17 @@
+[org 0x7c00]
 mov ah, 0x0e
-mov al, 'A'
-int 0x10
+mov bx, string
 
-low:
-    inc al
-    cmp al, 'Z'+1
+loop:
+    mov al, [bx]
+    cmp al, 0
     je exit
-    cmp al, 'a'
-    jl lower
     int 0x10
-    jmp upp
+    inc bx
+    jmp loop
 
-lower:
-    add al, 32
-    int 0x10
-    jmp upp
-
-upp:
-    inc al
-    cmp al, 'z'+1
-    je exit
-    cmp al, 'a'
-    jg upper
-    int 0x10
-    jmp low
-
-upper:
-    add al, -32
-    int 0x10
-    jmp low
+string:
+    db "F_ck this",0
 
 exit:
     jmp $
