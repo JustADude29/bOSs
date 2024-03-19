@@ -76,16 +76,36 @@ void terminal_putentryat(char c, uint8_t color, size_t x, size_t y) {
   terminal_buffer[index] = vga_entry(c, color);
 }
 
+char terminal_readentryat(size_t x, size_t y) {
+  const size_t index = y * VGA_WIDTH + x;
+  return terminal_buffer[index];
+}
+
+void terminal_scroll() {
+  size_t i,j;
+  char c;
+  for(i=1; i<VGA_HEIGHT; i++) {
+    for(j=0; j<VGA_WIDTH; j++) {
+      c = terminal_readentryat(j,i); 
+      terminal_putentryat(c, terminal_color, j, i-1);
+    }
+  }
+}
+
 void terminal_putchar(char c) {
   if (c == '\n') {
-    terminal_row++;
+    if(++terminal_row == VGA_HEIGHT) {
+      terminal_scroll();
+      terminal_row--;
+    }
     terminal_column = 0;
   } else {
     terminal_putentryat(c, terminal_color, terminal_column, terminal_row);
     if (++terminal_column == VGA_WIDTH) {
       terminal_column = 0;
       if (++terminal_row == VGA_HEIGHT)
-        terminal_row = 0;
+        terminal_scroll();
+        terminal_row--;
     }
   }
 }
@@ -104,5 +124,5 @@ void kernel_main(void) {
   terminal_initialize();
 
   /* Newline support is left as an exercise. */
-  terminal_writestring("Hello, \nkernel World!\n");
+  terminal_writestring("Hello, \nkernel World!\nla\nbaaa\n!\na\n!\n!\na\na\n!\n!\na\n!\na\n!\na\n!\na\n!\na\n!\na\na\na\naa\naaa");
 }
