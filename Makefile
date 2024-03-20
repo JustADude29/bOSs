@@ -26,6 +26,7 @@ bOSs.iso: bin/bOSs.bin copyFiles
 
 clean:
 	rm -rf bin/*
+	rm -rf isodir/*
 	rm -f bOSs.iso
 
 test:
