@@ -19,6 +19,10 @@ build: clean
 	@echo
 	@echo
 
+iso: clean
+	$(MAKE) headerlog header="Building ISO"
+	bash -c "$(SCRIPTSDIR)/iso.sh"
+
 run: build
 	$(MAKE) headerlog header="Running"
 	bash -c "$(SCRIPTSDIR)/qemu.sh"
