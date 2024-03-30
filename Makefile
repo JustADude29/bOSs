@@ -1,36 +1,40 @@
-ASM=i686-elf-as
-GCC=i686-elf-gcc
-LD=i686-elf-gcc
-CFLAGS=-std=gnu99 -ffreestanding -O2 -Wall -Wextra
-LDFLAGS=-ffreestanding -O2 -nostdlib -lgcc
+export PROJECTDIR = $(CURDIR)
+export SCRIPTSDIR = $(PROJECTDIR)/scripts
 
-all: bOSs.iso
-
-bin/boot.o: src/boot.s
-	mkdir -p bin
-	$(ASM) src/boot.s -o bin/boot.o
-
-bin/kernel.o: src/kernel.c
-	$(GCC) -c src/kernel.c -o bin/kernel.o $(CFLAGS)
-
-bin/bOSs.bin: bin/boot.o bin/kernel.o
-	$(LD) -T src/linker.ld -o bin/bOSs.bin bin/boot.o bin/kernel.o $(LDFLAGS)
-
-copyFiles:
-	mkdir -p isodir/boot/grub
-	cp bin/bOSs.bin isodir/boot/bOSs.bin
-	cp src/grub.cfg isodir/boot/grub/grub.cfg
-
-bOSs.iso: bin/bOSs.bin copyFiles
-	grub2-mkrescue -o bOSs.iso isodir
+help:
+	@echo "Make <action>:"
+	@echo " clean"
+	@echo " build"
+	@echo " run"
 
 clean:
-	rm -rf bin/*
-	rm -rf isodir/*
-	rm -f bOSs.iso
+	$(MAKE) headerlog header="Cleaning"
+	bash -c "$(SCRIPTSDIR)/clean.sh"
+	@echo
+	@echo
 
-test:
-	qemu-system-i386 -cdrom bOSs.iso	
+build: clean
+	$(MAKE) headerlog header="Building"
+	bash -c "$(SCRIPTSDIR)/build.sh"
+	@echo
+	@echo
 
-.PHONY: all clean
+iso: clean
+	$(MAKE) headerlog header="Building ISO"
+	bash -c "$(SCRIPTSDIR)/iso.sh"
+
+run: build
+	$(MAKE) headerlog header="Running"
+	bash -c "$(SCRIPTSDIR)/qemu.sh"
+	@echo
+	@echo
+
+headerlog:
+	@echo
+	@echo
+	@echo "==== $(header)":
+	@echo
+	@echo
+
+.PHONY: help build clean
 
