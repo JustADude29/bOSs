@@ -1,8 +1,11 @@
 #include <stdio.h>
 
+#include <kernel/gdt.h>
 #include <kernel/tty.h>
 
 void kernel_main(void) {
-    terminal_initialize();
-    printf("Hello OS\n");
+  gdt_init();
+
+  terminal_initialize();
+  printf("Hello OS\n");
 }

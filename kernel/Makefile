@@ -59,6 +59,9 @@ bOSs.kernel: $(OBJS) $(ARCHDIR)/linker.ld
 $(ARCHDIR)/crtbegin.o $(ARCHDIR)/crtend.o:
 	OBJ=`$(CC) $(CFLAGS) $(LDFLAGS) -print-file-name=$(@F)` && cp "$$OBJ" $@
  
+$(ARCHDIR)/gdt_load.o: $(ARCHDIR)/gdt_load.s
+	$(AS) $(ASFLAGS) -o $@ $<
+
 .c.o:
 	$(CC) -MD -c $< -o $@ -std=gnu11 $(CFLAGS) $(CPPFLAGS)
  
