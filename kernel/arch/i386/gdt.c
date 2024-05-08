@@ -7,21 +7,15 @@ extern void gdt_load(addr_t);
 struct gdt_entry gdt_entries[5];
 struct gdt_ptr GDTStruct;
 
-// __attribute__((aligned(0x1000))) struct GDT defaultGDT = {
-//     {0, 0, 0, 0, 0, 0},      // null segment
-//     {0xffff, 0, 0, 0x9a, 0xcf, 0}, // kernel code
-//     {0xffff, 0, 0, 0x92, 0xcf, 0}, // kernel data
-// };
-
 void gdt_init() {
   GDTStruct.limit = (sizeof(struct gdt_entry)*5) - 1;
   GDTStruct.base = &gdt_entries;
   
-  set_gdt_gate(0, 0, 0, 0, 0);
-  set_gdt_gate(1, 0, 0xFFFFFFFF, 0x9A, 0xCF);
-  set_gdt_gate(2, 0, 0xFFFFFFFF, 0x92, 0xCF);
-  set_gdt_gate(3, 0, 0xFFFFFFFF, 0xFA, 0xCF);
-  set_gdt_gate(4, 0, 0xFFFFFFFF, 0xF2, 0xCF);
+  set_gdt_gate(0, 0, 0, 0, 0);  // null segment
+  set_gdt_gate(1, 0, 0xFFFFFFFF, 0x9A, 0xCF); // kernel code
+  set_gdt_gate(2, 0, 0xFFFFFFFF, 0x92, 0xCF); // kernel data
+  set_gdt_gate(3, 0, 0xFFFFFFFF, 0xFA, 0xCF); // user code 
+  set_gdt_gate(4, 0, 0xFFFFFFFF, 0xF2, 0xCF); // user data
 
   gdt_load(&GDTStruct);
 }

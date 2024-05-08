@@ -15,3 +15,13 @@ bOSs is currently a barebones OS that does nothing, dont waste your time on it
 - Run `make iso` to make iso
 - Run `make run` to run the iso on qemu
 - Run `make clean` to clean
+
+## Milestones:
+- [x] Standard Library
+- [x] Terminal Printing
+- [x] Implement GDT
+- [ ] Interrupts
+- [ ] Timer
+- [ ] Keyboard Input
+- [ ] Paging
+- [ ] Permissions
