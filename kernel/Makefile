@@ -2,7 +2,7 @@ DEFAULT_HOST!=../scripts/default-host.sh
 HOST?=DEFAULT_HOST
 HOSTARCH!=../scripts/target-triplet-to-arch.sh $(HOST)
  
-CFLAGS?=-O2 -g
+CFLAGS?=
 CPPFLAGS?=
 LDFLAGS?=
 LIBS?=
@@ -58,9 +58,6 @@ bOSs.kernel: $(OBJS) $(ARCHDIR)/linker.ld
  
 $(ARCHDIR)/crtbegin.o $(ARCHDIR)/crtend.o:
 	OBJ=`$(CC) $(CFLAGS) $(LDFLAGS) -print-file-name=$(@F)` && cp "$$OBJ" $@
- 
-$(ARCHDIR)/gdt_load.o: $(ARCHDIR)/gdt_load.s
-	$(AS) $(ASFLAGS) -o $@ $<
 
 .c.o:
 	$(CC) -MD -c $< -o $@ -std=gnu11 $(CFLAGS) $(CPPFLAGS)

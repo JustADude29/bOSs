@@ -12,6 +12,27 @@ static bool print(const char *data, size_t length) {
   return true;
 }
 
+static int int_to_string(int num, char *buffer) {
+  int i = 0;
+  int temp = num;
+  if (temp < 0) {
+    buffer[i++] = '-';
+    temp = -temp;
+  }
+  int count = 0;
+  do {
+    buffer[i++] = '0' + (temp % 10);
+    temp /= 10;
+    count++;
+  } while (temp != 0);
+  for (int j = 0; j < count / 2; j++) {
+    char temp = buffer[j];
+    buffer[j] = buffer[count - j - 1];
+    buffer[count - j - 1] = temp;
+  }
+  return i;
+}
+
 int printf(const char *restrict format, ...) {
   va_list parameters;
   va_start(parameters, format);
@@ -59,6 +80,18 @@ int printf(const char *restrict format, ...) {
         return -1;
       }
       if (!print(str, len))
+        return -1;
+      written += len;
+    } else if (*format == 'd') {
+      format++;
+      int num = va_arg(parameters, int);
+      char num_str[12]; // Maximum 12 characters for an integer
+      size_t len = int_to_string(num, num_str);
+      if (maxrem < len) {
+        // TODO: Set errno to EOVERFLOW.
+        return -1;
+      }
+      if (!print(num_str, len))
         return -1;
       written += len;
     } else {

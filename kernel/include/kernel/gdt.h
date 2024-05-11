@@ -18,8 +18,8 @@ struct gdt_entry {
   unsigned char base_high;
 } __attribute__((packed));
 
-void gdt_init();
-
 void set_gdt_gate(unsigned int num, unsigned int base, unsigned int limit, unsigned char access, unsigned char flags);
+
+void gdt_init();
 
 #endif // !_KERNEL_GDT_H

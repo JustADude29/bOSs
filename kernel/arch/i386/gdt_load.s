@@ -1,12 +1,13 @@
 .intel_syntax noprefix
 .section .text
+
 .global gdt_load
+.extern gdtp
 
 gdt_load:
 	# Load the new GDT by dereferencing the pointer contained
 	# in register eax, which points to the 48 bit struct.
-  mov eax, [esp+4]
-	lgdt [eax]
+	lgdt [gdtp]
 	
 	# Set the data segment registers
 	mov eax, 0x10

@@ -20,8 +20,10 @@ bOSs is currently a barebones OS that does nothing, dont waste your time on it
 - [x] Standard Library
 - [x] Terminal Printing
 - [x] Implement GDT
-- [ ] Interrupts
+- [x] Interrupts:
+    - [x] CPU Interrupts
+    - [ ] Hardware Interrupts
+- [ ] Paging
 - [ ] Timer
 - [ ] Keyboard Input
-- [ ] Paging
 - [ ] Permissions
