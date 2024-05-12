@@ -1,4 +1,3 @@
 *.o
 *.d
 *.kernel
-isrs_gen.*
