@@ -12,7 +12,8 @@ static bool print(const char *data, size_t length) {
   return true;
 }
 
-static int int_to_string(int num, char *buffer) {
+static int int_to_string(int num, char *buffer, int base) {
+  const char *digits = "0123456789abcdef";
   int i = 0;
   int temp = num;
   if (temp < 0) {
@@ -21,8 +22,8 @@ static int int_to_string(int num, char *buffer) {
   }
   int count = 0;
   do {
-    buffer[i++] = '0' + (temp % 10);
-    temp /= 10;
+    buffer[i++] = digits[temp % base];
+    temp /= base;
     count++;
   } while (temp != 0);
   for (int j = 0; j < count / 2; j++) {
@@ -86,7 +87,19 @@ int printf(const char *restrict format, ...) {
       format++;
       int num = va_arg(parameters, int);
       char num_str[12]; // Maximum 12 characters for an integer
-      size_t len = int_to_string(num, num_str);
+      size_t len = int_to_string(num, num_str, 10);
+      if (maxrem < len) {
+        // TODO: Set errno to EOVERFLOW.
+        return -1;
+      }
+      if (!print(num_str, len))
+        return -1;
+      written += len;
+    } else if (*format == 'x') {
+      format++;
+      int num = va_arg(parameters, int);
+      char num_str[12]; // Maximum 12 characters for an integer
+      size_t len = int_to_string(num, num_str, 16);
       if (maxrem < len) {
         // TODO: Set errno to EOVERFLOW.
         return -1;

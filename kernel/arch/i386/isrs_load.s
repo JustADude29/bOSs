@@ -245,10 +245,7 @@ isr31:
 # Common ISR stub
 isr_common_stub:
   pusha
-  ; push ds
-  ; push es
-  ; push fs
-  ; push gs
+
   xor eax, eax
   mov ax, ds
   push eax
@@ -259,22 +256,16 @@ isr_common_stub:
   mov fs, ax
   mov gs, ax
 
-  ; mov eax, esp
-  ; mov eax, fault_handler
-  push eax
+  push esp
   call fault_handler
   add esp, 4
-  ; call eax
+
   pop eax
   mov ds, ax
   mov es, ax
   mov fs, ax
   mov gs, ax
 
-  ; pop gs
-  ; pop fs
-  ; pop es
-  ; pop ds
   popa
   add esp, 8
   iret

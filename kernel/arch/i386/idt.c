@@ -1,6 +1,6 @@
 #include <kernel/idt.h>
-#include <stdio.h>
 #include <stdint.h>
+#include <stdio.h>
 #include <string.h>
 
 extern void idt_load();
@@ -25,5 +25,7 @@ void idt_init() {
   memset(&idt_entries, 0, sizeof(struct idt_entry) * 256);
 
   idt_load();
-  printf("IDT loaded\n");
+  terminal_setcolor(10, 0);
+  printf("IDT Loaded\n");
+  terminal_setcolor(7, 0);
 }

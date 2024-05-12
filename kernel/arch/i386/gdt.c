@@ -7,7 +7,8 @@ extern void gdt_load();
 struct gdt_entry gdt_entries[5];
 struct gdt_ptr gdtp;
 
-void set_gdt_gate(unsigned int num, unsigned int base, unsigned int limit, unsigned char access, unsigned char gran){
+void set_gdt_gate(unsigned int num, unsigned int base, unsigned int limit,
+                  unsigned char access, unsigned char gran) {
   gdt_entries[num].base_low = (base & 0xFFFF);
   gdt_entries[num].base_middle = (base >> 16) & 0xFF;
   gdt_entries[num].base_high = (base >> 24) & 0xFF;
@@ -20,16 +21,17 @@ void set_gdt_gate(unsigned int num, unsigned int base, unsigned int limit, unsig
 }
 
 void gdt_init() {
-  gdtp.limit = (sizeof(struct gdt_entry)*5) - 1;
+  gdtp.limit = (sizeof(struct gdt_entry) * 5) - 1;
   gdtp.base = &gdt_entries;
-  
-  set_gdt_gate(0, 0, 0, 0, 0);  // null segment
+
+  set_gdt_gate(0, 0, 0, 0, 0);                // null segment
   set_gdt_gate(1, 0, 0xFFFFFFFF, 0x9A, 0xCF); // kernel code
   set_gdt_gate(2, 0, 0xFFFFFFFF, 0x92, 0xCF); // kernel data
-  set_gdt_gate(3, 0, 0xFFFFFFFF, 0xFA, 0xCF); // user code 
+  set_gdt_gate(3, 0, 0xFFFFFFFF, 0xFA, 0xCF); // user code
   set_gdt_gate(4, 0, 0xFFFFFFFF, 0xF2, 0xCF); // user data
 
   gdt_load();
-  printf("GDT loaded\n");
+  terminal_setcolor(10, 0);
+  printf("GDT Loaded\n");
+  terminal_setcolor(7, 0);
 }
-

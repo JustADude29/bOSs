@@ -1,74 +1,15 @@
 #include <kernel/idt.h>
 #include <kernel/isrs.h>
+#include <kernel/tty.h>
 
-extern void isr0();
-extern void isr1();
-extern void isr2();
-extern void isr3();
-extern void isr4();
-extern void isr5();
-extern void isr6();
-extern void isr7();
-extern void isr8();
-extern void isr9();
-extern void isr10();
-extern void isr11();
-extern void isr12();
-extern void isr13();
-extern void isr14();
-extern void isr15();
-extern void isr16();
-extern void isr17();
-extern void isr18();
-extern void isr19();
-extern void isr20();
-extern void isr21();
-extern void isr22();
-extern void isr23();
-extern void isr24();
-extern void isr25();
-extern void isr26();
-extern void isr27();
-extern void isr28();
-extern void isr29();
-extern void isr30();
-extern void isr31();
+void isrs_init_gates();
 
 void isrs_init() {
-  set_idt_gate(0, (unsigned int)isr0, 0x08, 0x8E);
-  set_idt_gate(1, (unsigned int)isr1, 0x08, 0x8E);
-  set_idt_gate(2, (unsigned int)isr2, 0x08, 0x8E);
-  set_idt_gate(3, (unsigned int)isr3, 0x08, 0x8E);
-  set_idt_gate(4, (unsigned int)isr4, 0x08, 0x8E);
-  set_idt_gate(5, (unsigned int)isr5, 0x08, 0x8E);
-  set_idt_gate(6, (unsigned int)isr6, 0x08, 0x8E);
-  set_idt_gate(7, (unsigned int)isr7, 0x08, 0x8E);
-  set_idt_gate(8, (unsigned int)isr8, 0x08, 0x8E);
-  set_idt_gate(9, (unsigned int)isr9, 0x08, 0x8E);
-  set_idt_gate(10, (unsigned int)isr10, 0x08, 0x8E);
-  set_idt_gate(11, (unsigned int)isr11, 0x08, 0x8E);
-  set_idt_gate(12, (unsigned int)isr12, 0x08, 0x8E);
-  set_idt_gate(13, (unsigned int)isr13, 0x08, 0x8E);
-  set_idt_gate(14, (unsigned int)isr14, 0x08, 0x8E);
-  set_idt_gate(15, (unsigned int)isr15, 0x08, 0x8E);
-  set_idt_gate(16, (unsigned int)isr16, 0x08, 0x8E);
-  set_idt_gate(17, (unsigned int)isr17, 0x08, 0x8E);
-  set_idt_gate(18, (unsigned int)isr18, 0x08, 0x8E);
-  set_idt_gate(19, (unsigned int)isr19, 0x08, 0x8E);
-  set_idt_gate(20, (unsigned int)isr20, 0x08, 0x8E);
-  set_idt_gate(21, (unsigned int)isr21, 0x08, 0x8E);
-  set_idt_gate(22, (unsigned int)isr22, 0x08, 0x8E);
-  set_idt_gate(23, (unsigned int)isr23, 0x08, 0x8E);
-  set_idt_gate(24, (unsigned int)isr24, 0x08, 0x8E);
-  set_idt_gate(25, (unsigned int)isr25, 0x08, 0x8E);
-  set_idt_gate(26, (unsigned int)isr26, 0x08, 0x8E);
-  set_idt_gate(27, (unsigned int)isr27, 0x08, 0x8E);
-  set_idt_gate(28, (unsigned int)isr28, 0x08, 0x8E);
-  set_idt_gate(29, (unsigned int)isr29, 0x08, 0x8E);
-  set_idt_gate(30, (unsigned int)isr30, 0x08, 0x8E);
-  set_idt_gate(31, (unsigned int)isr31, 0x08, 0x8E);
+  isrs_init_gates();
 
+  terminal_setcolor(10, 0);
   printf("ISRs Loaded\n");
+  terminal_setcolor(7, 0);
 }
 
 const char *isr_exceptions[] = {
@@ -127,12 +68,27 @@ const char *isr_exceptions[] = {
     "Reserved"};
 
 void fault_handler(struct regs *r) {
-  puts("Fault Handler here to save the day!\n");
+  terminal_setcolor(4, 0);
   if (r->int_no < 32) {
-    puts(isr_exceptions[r->int_no]);
-    puts("\nSystem Halted!\n");
-    for (;;);
+    printf("\n%s encountered:\n", isr_exceptions[r->int_no]);
+    printf("  eax:%x ebx:%x ecx:%x edx:%x esi:%x edi:%x\n",
+            r->eax, r->ebx, r->ecx, r->edx, r->esi, r->edi);
+    printf("  esp:%x ebp:%x eip:%x eflags:%x cs:%x ds:%x ss:%x\n",
+            r->kernelesp, r->ebp, r->eip, r->eflags, r->cs, r->ds, r->ss);
+    printf("  Interrupt: %x ErrorCode: %x\n", r->int_no, r->err_code);
+    printf("SYSTEM HALTED!\n");
+    for(;;);
+  }else{
+    puts("Unhandled Exception encountered:");
+    printf("  eax:%x ebx:%x ecx:%x edx:%x esi:%x edi:%x\n",
+            r->eax, r->ebx, r->ecx, r->edx, r->esi, r->edi);
+    printf("  esp:%x ebp:%x eip:%x eflags:%x cs:%x ds:%x ss:%x\n", 
+            r->kernelesp, r->ebp, r->eip, r->eflags, r->cs, r->ds, r->ss);
+    printf("  Interrupt: %x ErrorCode: %x\n", r->int_no, r->err_code);
+    printf("SYSTEM HALTED!\n");
+    for(;;);
   }
+  terminal_setcolor(7, 0);
 }
 
 

@@ -52,7 +52,7 @@ $(ARCHDIR)/crtn.o \
  
 all: bOSs.kernel
  
-bOSs.kernel: $(OBJS) $(ARCHDIR)/linker.ld
+bOSs.kernel: generate_isrs $(OBJS) $(ARCHDIR)/linker.ld
 	$(CC) -T $(ARCHDIR)/linker.ld -o $@ $(CFLAGS) $(LINK_LIST)
 	grub2-file --is-x86-multiboot bOSs.kernel
  
@@ -64,6 +64,9 @@ $(ARCHDIR)/crtbegin.o $(ARCHDIR)/crtend.o:
  
 .S.o:
 	$(CC) -MD -c $< -o $@ $(CFLAGS) $(CPPFLAGS)
+
+generate_isrs: $(ARCHDIR)/isrs_gen.c $(ARCHDIR)/isrs_gen.inc
+	@../scripts/generate_isrs.sh $(ARCHDIR)/isrs_gen.c $(ARCHDIR)/isrs_gen.inc $@
  
 clean:
 	rm -f bOSs.kernel

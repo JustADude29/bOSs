@@ -11,8 +11,8 @@ void kernel_main(void) {
   idt_init();
   isrs_init();
 
-  int n = 10/0;
-  putchar(n/0);
+  printf("\nHello bOSs\nKaise Ho aap?\n");
+  __asm("int $0x0");
   printf("\nHello bOSs\nKaise Ho aap?\n");
 }
 
