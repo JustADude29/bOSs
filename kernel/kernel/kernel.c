@@ -4,15 +4,17 @@
 #include <kernel/tty.h>
 #include <kernel/idt.h>
 #include <kernel/isrs.h>
+#include <kernel/irq.h>
 
 void kernel_main(void) {
   terminal_initialize();
   gdt_init();
   idt_init();
   isrs_init();
+  irq_init();
 
   printf("\nHello bOSs\nKaise Ho aap?\n");
-  __asm("int $0x0");
+  __asm__ __volatile__ ("sti");
   printf("\nHello bOSs\nKaise Ho aap?\n");
 }
 

@@ -3,8 +3,12 @@
 #include <stdio.h>
 #include <string.h>
 
+#define FLAG_SET(x, flag) x |= (flag)
+#define FLAG_UNSET(x, flag) x &= ~(flag)
+
 extern void idt_load();
 
+__attribute__((aligned(0x10)))
 struct idt_entry idt_entries[256];
 struct idt_ptr idtp;
 
@@ -28,4 +32,12 @@ void idt_init() {
   terminal_setcolor(10, 0);
   printf("IDT Loaded\n");
   terminal_setcolor(7, 0);
+}
+
+void idt_disableGate(int interrupt) {
+  FLAG_UNSET(idt_entries[interrupt].flags, IDT_FLAG_PRESENT);
+}
+
+void idt_enableGate(int interrupt) {
+  FLAG_SET(idt_entries[interrupt].flags, IDT_FLAG_PRESENT);
 }
