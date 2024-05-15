@@ -31,6 +31,7 @@ void irq_init() {
   }
 
   EnableInterrupts();
+
   terminal_setcolor(10, 0);
   printf("IRQ Loaded\n");
   terminal_setcolor(7, 0);

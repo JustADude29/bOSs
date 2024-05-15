@@ -14,7 +14,5 @@ void kernel_main(void) {
   irq_init();
 
   printf("\nHello bOSs\nKaise Ho aap?\n");
-  __asm__ __volatile__ ("sti");
-  printf("\nHello bOSs\nKaise Ho aap?\n");
 }
 

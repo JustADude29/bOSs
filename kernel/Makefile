@@ -65,8 +65,8 @@ $(ARCHDIR)/crtbegin.o $(ARCHDIR)/crtend.o:
 .S.o:
 	$(CC) -MD -c $< -o $@ $(CFLAGS) $(CPPFLAGS)
 
-generate_isrs: $(ARCHDIR)/isrs_gen.c $(ARCHDIR)/isrs_gen.inc
-	@../scripts/generate_isrs.sh $(ARCHDIR)/isrs_gen.c $(ARCHDIR)/isrs_gen.inc $@
+generate_isrs: $(ARCHDIR)/isrs_gen.c $(ARCHDIR)/isrs_loader.s
+	@../scripts/generate_isrs.sh $(ARCHDIR)/isrs_gen.c $(ARCHDIR)/isrs_loader.s $@
  
 clean:
 	rm -f bOSs.kernel

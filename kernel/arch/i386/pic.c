@@ -24,9 +24,9 @@ enum {
 } PIC_ICW4;
 
 enum {
-  PIC_CMD_END_OF_INTERRUPT = 0x20,
-  PIC_CMD_READ_IRR = 0x0A,
-  PIC_CMD_READ_ISR = 0x0B,
+  PIC_CMD_END_OF_INTERRUPT  = 0x20,
+  PIC_CMD_READ_IRR          = 0x0A,
+  PIC_CMD_READ_ISR          = 0x0B,
 } PIC_CMD;
 
 void PIC_Configure(unsigned char offsetPIC1, unsigned char offsetPIC2) {
@@ -58,8 +58,8 @@ void PIC_Configure(unsigned char offsetPIC1, unsigned char offsetPIC2) {
 
 void PIC_SendEndOfInterrupt(int irq) {
   if(irq >= 8)
-    outportb(PIC2_DATA_PORT, PIC_CMD_END_OF_INTERRUPT);
-  outportb(PIC1_DATA_PORT, PIC_CMD_END_OF_INTERRUPT);
+    outportb(PIC2_COMMAND_PORT, PIC_CMD_END_OF_INTERRUPT);
+  outportb(PIC1_COMMAND_PORT, PIC_CMD_END_OF_INTERRUPT);
 }
 
 void PIC_Disable() {
@@ -76,12 +76,12 @@ void PIC_Mask(int irq) {
     port = PIC1_DATA_PORT;
   }
   else {
-    irq-=8;
+    irq -= 8;
     port = PIC2_DATA_PORT;
   }
 
-  unsigned char mask = inportb(PIC1_DATA_PORT);
-  outportb(PIC1_DATA_PORT, mask | (1 << irq));
+  unsigned char mask = inportb(port) | (1 << irq);
+  outportb(port, mask);
 }
 
 void PIC_Unmask(int irq) {
@@ -95,18 +95,18 @@ void PIC_Unmask(int irq) {
     port = PIC2_DATA_PORT;
   }
 
-  unsigned char mask = inportb(PIC1_DATA_PORT);
-  outportb(PIC1_DATA_PORT, mask & ~(1 << irq));
+  unsigned char mask = inportb(port) & ~(1 << irq);
+  outportb(port, mask);
 }
 
 unsigned short PIC_ReadIrqRequestRegister() {
-  outportb(PIC1_DATA_PORT, PIC_CMD_READ_IRR);
-  outportb(PIC2_DATA_PORT, PIC_CMD_READ_IRR);
-  return ((unsigned short)inportb(PIC2_COMMAND_PORT) | ((unsigned short)inportb(PIC2_DATA_PORT) << 8));
+  outportb(PIC1_COMMAND_PORT, PIC_CMD_READ_IRR);
+  outportb(PIC2_COMMAND_PORT, PIC_CMD_READ_IRR);
+  return ((unsigned short)inportb(PIC2_COMMAND_PORT) | ((unsigned short)inportb(PIC2_COMMAND_PORT) << 8));
 }
 
 unsigned short PIC_ReadInServiceRegister() {
-  outportb(PIC1_DATA_PORT, PIC_CMD_READ_IRR);
-  outportb(PIC2_DATA_PORT, PIC_CMD_READ_IRR);
-  return ((unsigned short)inportb(PIC2_COMMAND_PORT) | ((unsigned short)inportb(PIC2_DATA_PORT) << 8));
+  outportb(PIC1_COMMAND_PORT, PIC_CMD_READ_ISR);
+  outportb(PIC2_COMMAND_PORT, PIC_CMD_READ_ISR);
+  return ((unsigned short)inportb(PIC2_COMMAND_PORT) | ((unsigned short)inportb(PIC2_COMMAND_PORT) << 8));
 }
