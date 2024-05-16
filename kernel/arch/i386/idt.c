@@ -6,7 +6,7 @@
 #define FLAG_SET(x, flag) x |= (flag)
 #define FLAG_UNSET(x, flag) x &= ~(flag)
 
-extern void idt_load(struct idt_ptr* idtp);
+extern void idt_load();
 
 __attribute__((aligned(0x10)))
 struct idt_entry idt_entries[256];
@@ -28,7 +28,8 @@ void idt_init() {
 
   memset(&idt_entries, 0, sizeof(struct idt_entry) * 256);
 
-  idt_load(&idtp);
+  idt_load();
+
   terminal_setcolor(10, 0);
   printf("IDT Loaded\n");
   terminal_setcolor(7, 0);

@@ -8,7 +8,7 @@
 
 IRQHandler irq_handlers[16];
 
-void IRQ_Handler(struct regs *r) {
+void IRQ_Handler(registers *r) {
   int irq = r->int_no - PIC_REMAP_OFFSET;
 
   unsigned short pic_isr = PIC_ReadInServiceRegister();

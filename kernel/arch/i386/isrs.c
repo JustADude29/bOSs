@@ -23,7 +23,7 @@ void isrs_init() {
 }
 
 
-void fault_handler(struct regs *r) {
+void fault_handler(registers *r) {
   terminal_setcolor(4, 0);
   if(ISRHandlers[r->int_no] != NULL){
     ISRHandlers[r->int_no](r);
@@ -52,7 +52,14 @@ void fault_handler(struct regs *r) {
   terminal_setcolor(7, 0);
 }
 
-void isr_register_handler(int interrupt, void (*handler)(struct regs *r)) {
+void isr_register_handler(int interrupt, void (*handler)(registers *r)) {
   ISRHandlers[interrupt] = handler;
   idt_enableGate(interrupt);
+}
+
+void isr_list_handlers() {
+  for(int i=32; i<256; i++) {
+    if(ISRHandlers[i]!=NULL)
+      printf("Yooo\n");
+  }
 }

@@ -12,6 +12,7 @@ void kernel_main(void) {
   idt_init();
   isrs_init();
   irq_init();
+  cls();
 
   printf("\nHello bOSs\nKaise Ho aap?\n");
 }

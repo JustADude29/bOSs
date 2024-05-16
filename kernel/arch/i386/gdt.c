@@ -10,11 +10,11 @@ struct gdt_ptr gdtp;
 void set_gdt_gate(unsigned int num, unsigned int base, unsigned int limit,
                   unsigned char access, unsigned char gran) {
   gdt_entries[num].base_low = (base & 0xFFFF);
-  gdt_entries[num].base_middle = (base >> 16) & 0xFF;
-  gdt_entries[num].base_high = (base >> 24) & 0xFF;
+  gdt_entries[num].base_middle = ((base >> 16) & 0xFF);
+  gdt_entries[num].base_high = ((base >> 24) & 0xFF);
 
   gdt_entries[num].limit = (limit & 0xFFFF);
-  gdt_entries[num].flags = (limit >> 16) & 0x0F;
+  gdt_entries[num].flags = ((limit >> 16) & 0x0F);
   gdt_entries[num].flags |= (gran & 0xF0);
 
   gdt_entries[num].access = access;
@@ -22,7 +22,7 @@ void set_gdt_gate(unsigned int num, unsigned int base, unsigned int limit,
 
 void gdt_init() {
   gdtp.limit = (sizeof(struct gdt_entry) * 5) - 1;
-  gdtp.base = &gdt_entries;
+  gdtp.base = (unsigned int)&gdt_entries;
 
   set_gdt_gate(0, 0, 0, 0, 0);                // null segment
   set_gdt_gate(1, 0, 0xFFFFFFFF, 0x9A, 0xCF); // kernel code

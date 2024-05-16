@@ -50,9 +50,9 @@ void PIC_Configure(unsigned char offsetPIC1, unsigned char offsetPIC2) {
   outportb(PIC2_DATA_PORT, PIC_ICW4_8086);
   iowait();
 
-  outportb(PIC1_DATA_PORT, 0);
+  outportb(PIC1_DATA_PORT, 0x0);
   iowait();
-  outportb(PIC2_DATA_PORT, 0);
+  outportb(PIC2_DATA_PORT, 0x0);
   iowait();
 }
 

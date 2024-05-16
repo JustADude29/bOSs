@@ -3,8 +3,8 @@
 #include <stdint.h>
 #include <string.h>
 
-#include <kernel/tty.h>
 #include <kernel/io.h>
+#include <kernel/tty.h>
 
 #include "vga.h"
 
@@ -17,9 +17,8 @@ static size_t terminal_column;
 static uint8_t terminal_color;
 static uint16_t *terminal_buffer;
 
-void terminal_move_csr(void)
-{
-  unsigned index;
+void move_csr(void) {
+  unsigned int index;
   index = terminal_row * VGA_WIDTH + terminal_column;
 
   outportb(0x3D4, 14);
@@ -27,7 +26,6 @@ void terminal_move_csr(void)
   outportb(0x3D4, 15);
   outportb(0x3D5, index);
 }
-
 
 void terminal_initialize(void) {
   terminal_row = 0;
@@ -40,9 +38,10 @@ void terminal_initialize(void) {
       terminal_buffer[index] = vga_entry(' ', terminal_color);
     }
   }
+  move_csr();
 }
 
-void cls() {
+void cls(void) {
   terminal_row = 0;
   terminal_column = 0;
   for (size_t y = 0; y < VGA_HEIGHT; y++) {
@@ -51,7 +50,7 @@ void cls() {
       terminal_buffer[index] = vga_entry(' ', terminal_color);
     }
   }
-  terminal_move_csr();
+  move_csr();
 }
 
 void terminal_setcolor(uint8_t color) { terminal_color = color; }
@@ -92,7 +91,7 @@ void terminal_putchar(char c) {
       terminal_scroll();
       terminal_row = VGA_HEIGHT - 1;
     }
-    terminal_move_csr();
+    move_csr();
     return;
   }
 
@@ -104,7 +103,7 @@ void terminal_putchar(char c) {
       terminal_row = VGA_HEIGHT - 1;
     }
   }
-  terminal_move_csr();
+  move_csr();
 }
 
 void terminal_write(const char *data, size_t size) {
