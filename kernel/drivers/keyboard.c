@@ -1,4 +1,4 @@
-#include <kernel/keyboard.h>
+#include "keyboard.h"
 
 unsigned char kbdus[128] =
 {

@@ -1,4 +1,4 @@
-#include <kernel/pit.h>
+#include "pit.h"
 
 #define CHANNEL1_DATA_REGISTER 0x40
 #define CHANNEL2_DATA_REGISTER 0x41

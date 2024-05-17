@@ -22,8 +22,8 @@ bOSs is currently a barebones OS that does nothing, dont waste your time on it
 - [x] Implement GDT
 - [x] Interrupts:
     - [x] CPU Interrupts
-    - [ ] Hardware Interrupts
+    - [x] Hardware Interrupts
+- [x] Timer
+- [x] Keyboard Input
 - [ ] Paging
-- [ ] Timer
-- [ ] Keyboard Input
 - [ ] Permissions

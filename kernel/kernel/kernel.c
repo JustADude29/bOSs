@@ -5,8 +5,8 @@
 #include <kernel/idt.h>
 #include <kernel/isrs.h>
 #include <kernel/irq.h>
-#include <kernel/pit.h>
-#include <kernel/keyboard.h>
+#include <pit.h>
+#include <keyboard.h>
 
 void kernel_main(void) {
   terminal_initialize();
