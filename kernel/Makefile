@@ -19,7 +19,7 @@ LDFLAGS:=$(LDFLAGS)
 LIBS:=$(LIBS) -nostdlib -lk -lgcc
  
 ARCHDIR=arch/$(HOSTARCH)
-DRIVERDIR=drivers
+DRIVERDIR=drivers/drivers
  
 include $(ARCHDIR)/make.config
  
