@@ -4,1792 +4,1536 @@
 
 .global isr0
 isr0:
-  cli
   push 0
   push 0
   jmp isr_common_stub
 
 .global isr1
 isr1:
-  cli
   push 0
   push 1
   jmp isr_common_stub
 
 .global isr2
 isr2:
-  cli
   push 0
   push 2
   jmp isr_common_stub
 
 .global isr3
 isr3:
-  cli
   push 0
   push 3
   jmp isr_common_stub
 
 .global isr4
 isr4:
-  cli
   push 0
   push 4
   jmp isr_common_stub
 
 .global isr5
 isr5:
-  cli
   push 0
   push 5
   jmp isr_common_stub
 
 .global isr6
 isr6:
-  cli
   push 0
   push 6
   jmp isr_common_stub
 
 .global isr7
 isr7:
-  cli
   push 0
   push 7
   jmp isr_common_stub
 
 .global isr8
 isr8:
-  cli
 
   push 8
   jmp isr_common_stub
 
 .global isr9
 isr9:
-  cli
   push 0
   push 9
   jmp isr_common_stub
 
 .global isr10
 isr10:
-  cli
 
   push 10
   jmp isr_common_stub
 
 .global isr11
 isr11:
-  cli
 
   push 11
   jmp isr_common_stub
 
 .global isr12
 isr12:
-  cli
 
   push 12
   jmp isr_common_stub
 
 .global isr13
 isr13:
-  cli
 
   push 13
   jmp isr_common_stub
 
 .global isr14
 isr14:
-  cli
 
   push 14
   jmp isr_common_stub
 
 .global isr15
 isr15:
-  cli
   push 0
   push 15
   jmp isr_common_stub
 
 .global isr16
 isr16:
-  cli
   push 0
   push 16
   jmp isr_common_stub
 
 .global isr17
 isr17:
-  cli
 
   push 17
   jmp isr_common_stub
 
 .global isr18
 isr18:
-  cli
   push 0
   push 18
   jmp isr_common_stub
 
 .global isr19
 isr19:
-  cli
   push 0
   push 19
   jmp isr_common_stub
 
 .global isr20
 isr20:
-  cli
   push 0
   push 20
   jmp isr_common_stub
 
 .global isr21
 isr21:
-  cli
 
   push 21
   jmp isr_common_stub
 
 .global isr22
 isr22:
-  cli
   push 0
   push 22
   jmp isr_common_stub
 
 .global isr23
 isr23:
-  cli
   push 0
   push 23
   jmp isr_common_stub
 
 .global isr24
 isr24:
-  cli
   push 0
   push 24
   jmp isr_common_stub
 
 .global isr25
 isr25:
-  cli
   push 0
   push 25
   jmp isr_common_stub
 
 .global isr26
 isr26:
-  cli
   push 0
   push 26
   jmp isr_common_stub
 
 .global isr27
 isr27:
-  cli
   push 0
   push 27
   jmp isr_common_stub
 
 .global isr28
 isr28:
-  cli
   push 0
   push 28
   jmp isr_common_stub
 
 .global isr29
 isr29:
-  cli
   push 0
   push 29
   jmp isr_common_stub
 
 .global isr30
 isr30:
-  cli
   push 0
   push 30
   jmp isr_common_stub
 
 .global isr31
 isr31:
-  cli
   push 0
   push 31
   jmp isr_common_stub
 
 .global isr32
 isr32:
-  cli
   push 0
   push 32
   jmp isr_common_stub
 
 .global isr33
 isr33:
-  cli
   push 0
   push 33
   jmp isr_common_stub
 
 .global isr34
 isr34:
-  cli
   push 0
   push 34
   jmp isr_common_stub
 
 .global isr35
 isr35:
-  cli
   push 0
   push 35
   jmp isr_common_stub
 
 .global isr36
 isr36:
-  cli
   push 0
   push 36
   jmp isr_common_stub
 
 .global isr37
 isr37:
-  cli
   push 0
   push 37
   jmp isr_common_stub
 
 .global isr38
 isr38:
-  cli
   push 0
   push 38
   jmp isr_common_stub
 
 .global isr39
 isr39:
-  cli
   push 0
   push 39
   jmp isr_common_stub
 
 .global isr40
 isr40:
-  cli
   push 0
   push 40
   jmp isr_common_stub
 
 .global isr41
 isr41:
-  cli
   push 0
   push 41
   jmp isr_common_stub
 
 .global isr42
 isr42:
-  cli
   push 0
   push 42
   jmp isr_common_stub
 
 .global isr43
 isr43:
-  cli
   push 0
   push 43
   jmp isr_common_stub
 
 .global isr44
 isr44:
-  cli
   push 0
   push 44
   jmp isr_common_stub
 
 .global isr45
 isr45:
-  cli
   push 0
   push 45
   jmp isr_common_stub
 
 .global isr46
 isr46:
-  cli
   push 0
   push 46
   jmp isr_common_stub
 
 .global isr47
 isr47:
-  cli
   push 0
   push 47
   jmp isr_common_stub
 
 .global isr48
 isr48:
-  cli
   push 0
   push 48
   jmp isr_common_stub
 
 .global isr49
 isr49:
-  cli
   push 0
   push 49
   jmp isr_common_stub
 
 .global isr50
 isr50:
-  cli
   push 0
   push 50
   jmp isr_common_stub
 
 .global isr51
 isr51:
-  cli
   push 0
   push 51
   jmp isr_common_stub
 
 .global isr52
 isr52:
-  cli
   push 0
   push 52
   jmp isr_common_stub
 
 .global isr53
 isr53:
-  cli
   push 0
   push 53
   jmp isr_common_stub
 
 .global isr54
 isr54:
-  cli
   push 0
   push 54
   jmp isr_common_stub
 
 .global isr55
 isr55:
-  cli
   push 0
   push 55
   jmp isr_common_stub
 
 .global isr56
 isr56:
-  cli
   push 0
   push 56
   jmp isr_common_stub
 
 .global isr57
 isr57:
-  cli
   push 0
   push 57
   jmp isr_common_stub
 
 .global isr58
 isr58:
-  cli
   push 0
   push 58
   jmp isr_common_stub
 
 .global isr59
 isr59:
-  cli
   push 0
   push 59
   jmp isr_common_stub
 
 .global isr60
 isr60:
-  cli
   push 0
   push 60
   jmp isr_common_stub
 
 .global isr61
 isr61:
-  cli
   push 0
   push 61
   jmp isr_common_stub
 
 .global isr62
 isr62:
-  cli
   push 0
   push 62
   jmp isr_common_stub
 
 .global isr63
 isr63:
-  cli
   push 0
   push 63
   jmp isr_common_stub
 
 .global isr64
 isr64:
-  cli
   push 0
   push 64
   jmp isr_common_stub
 
 .global isr65
 isr65:
-  cli
   push 0
   push 65
   jmp isr_common_stub
 
 .global isr66
 isr66:
-  cli
   push 0
   push 66
   jmp isr_common_stub
 
 .global isr67
 isr67:
-  cli
   push 0
   push 67
   jmp isr_common_stub
 
 .global isr68
 isr68:
-  cli
   push 0
   push 68
   jmp isr_common_stub
 
 .global isr69
 isr69:
-  cli
   push 0
   push 69
   jmp isr_common_stub
 
 .global isr70
 isr70:
-  cli
   push 0
   push 70
   jmp isr_common_stub
 
 .global isr71
 isr71:
-  cli
   push 0
   push 71
   jmp isr_common_stub
 
 .global isr72
 isr72:
-  cli
   push 0
   push 72
   jmp isr_common_stub
 
 .global isr73
 isr73:
-  cli
   push 0
   push 73
   jmp isr_common_stub
 
 .global isr74
 isr74:
-  cli
   push 0
   push 74
   jmp isr_common_stub
 
 .global isr75
 isr75:
-  cli
   push 0
   push 75
   jmp isr_common_stub
 
 .global isr76
 isr76:
-  cli
   push 0
   push 76
   jmp isr_common_stub
 
 .global isr77
 isr77:
-  cli
   push 0
   push 77
   jmp isr_common_stub
 
 .global isr78
 isr78:
-  cli
   push 0
   push 78
   jmp isr_common_stub
 
 .global isr79
 isr79:
-  cli
   push 0
   push 79
   jmp isr_common_stub
 
 .global isr80
 isr80:
-  cli
   push 0
   push 80
   jmp isr_common_stub
 
 .global isr81
 isr81:
-  cli
   push 0
   push 81
   jmp isr_common_stub
 
 .global isr82
 isr82:
-  cli
   push 0
   push 82
   jmp isr_common_stub
 
 .global isr83
 isr83:
-  cli
   push 0
   push 83
   jmp isr_common_stub
 
 .global isr84
 isr84:
-  cli
   push 0
   push 84
   jmp isr_common_stub
 
 .global isr85
 isr85:
-  cli
   push 0
   push 85
   jmp isr_common_stub
 
 .global isr86
 isr86:
-  cli
   push 0
   push 86
   jmp isr_common_stub
 
 .global isr87
 isr87:
-  cli
   push 0
   push 87
   jmp isr_common_stub
 
 .global isr88
 isr88:
-  cli
   push 0
   push 88
   jmp isr_common_stub
 
 .global isr89
 isr89:
-  cli
   push 0
   push 89
   jmp isr_common_stub
 
 .global isr90
 isr90:
-  cli
   push 0
   push 90
   jmp isr_common_stub
 
 .global isr91
 isr91:
-  cli
   push 0
   push 91
   jmp isr_common_stub
 
 .global isr92
 isr92:
-  cli
   push 0
   push 92
   jmp isr_common_stub
 
 .global isr93
 isr93:
-  cli
   push 0
   push 93
   jmp isr_common_stub
 
 .global isr94
 isr94:
-  cli
   push 0
   push 94
   jmp isr_common_stub
 
 .global isr95
 isr95:
-  cli
   push 0
   push 95
   jmp isr_common_stub
 
 .global isr96
 isr96:
-  cli
   push 0
   push 96
   jmp isr_common_stub
 
 .global isr97
 isr97:
-  cli
   push 0
   push 97
   jmp isr_common_stub
 
 .global isr98
 isr98:
-  cli
   push 0
   push 98
   jmp isr_common_stub
 
 .global isr99
 isr99:
-  cli
   push 0
   push 99
   jmp isr_common_stub
 
 .global isr100
 isr100:
-  cli
   push 0
   push 100
   jmp isr_common_stub
 
 .global isr101
 isr101:
-  cli
   push 0
   push 101
   jmp isr_common_stub
 
 .global isr102
 isr102:
-  cli
   push 0
   push 102
   jmp isr_common_stub
 
 .global isr103
 isr103:
-  cli
   push 0
   push 103
   jmp isr_common_stub
 
 .global isr104
 isr104:
-  cli
   push 0
   push 104
   jmp isr_common_stub
 
 .global isr105
 isr105:
-  cli
   push 0
   push 105
   jmp isr_common_stub
 
 .global isr106
 isr106:
-  cli
   push 0
   push 106
   jmp isr_common_stub
 
 .global isr107
 isr107:
-  cli
   push 0
   push 107
   jmp isr_common_stub
 
 .global isr108
 isr108:
-  cli
   push 0
   push 108
   jmp isr_common_stub
 
 .global isr109
 isr109:
-  cli
   push 0
   push 109
   jmp isr_common_stub
 
 .global isr110
 isr110:
-  cli
   push 0
   push 110
   jmp isr_common_stub
 
 .global isr111
 isr111:
-  cli
   push 0
   push 111
   jmp isr_common_stub
 
 .global isr112
 isr112:
-  cli
   push 0
   push 112
   jmp isr_common_stub
 
 .global isr113
 isr113:
-  cli
   push 0
   push 113
   jmp isr_common_stub
 
 .global isr114
 isr114:
-  cli
   push 0
   push 114
   jmp isr_common_stub
 
 .global isr115
 isr115:
-  cli
   push 0
   push 115
   jmp isr_common_stub
 
 .global isr116
 isr116:
-  cli
   push 0
   push 116
   jmp isr_common_stub
 
 .global isr117
 isr117:
-  cli
   push 0
   push 117
   jmp isr_common_stub
 
 .global isr118
 isr118:
-  cli
   push 0
   push 118
   jmp isr_common_stub
 
 .global isr119
 isr119:
-  cli
   push 0
   push 119
   jmp isr_common_stub
 
 .global isr120
 isr120:
-  cli
   push 0
   push 120
   jmp isr_common_stub
 
 .global isr121
 isr121:
-  cli
   push 0
   push 121
   jmp isr_common_stub
 
 .global isr122
 isr122:
-  cli
   push 0
   push 122
   jmp isr_common_stub
 
 .global isr123
 isr123:
-  cli
   push 0
   push 123
   jmp isr_common_stub
 
 .global isr124
 isr124:
-  cli
   push 0
   push 124
   jmp isr_common_stub
 
 .global isr125
 isr125:
-  cli
   push 0
   push 125
   jmp isr_common_stub
 
 .global isr126
 isr126:
-  cli
   push 0
   push 126
   jmp isr_common_stub
 
 .global isr127
 isr127:
-  cli
   push 0
   push 127
   jmp isr_common_stub
 
 .global isr128
 isr128:
-  cli
   push 0
   push 128
   jmp isr_common_stub
 
 .global isr129
 isr129:
-  cli
   push 0
   push 129
   jmp isr_common_stub
 
 .global isr130
 isr130:
-  cli
   push 0
   push 130
   jmp isr_common_stub
 
 .global isr131
 isr131:
-  cli
   push 0
   push 131
   jmp isr_common_stub
 
 .global isr132
 isr132:
-  cli
   push 0
   push 132
   jmp isr_common_stub
 
 .global isr133
 isr133:
-  cli
   push 0
   push 133
   jmp isr_common_stub
 
 .global isr134
 isr134:
-  cli
   push 0
   push 134
   jmp isr_common_stub
 
 .global isr135
 isr135:
-  cli
   push 0
   push 135
   jmp isr_common_stub
 
 .global isr136
 isr136:
-  cli
   push 0
   push 136
   jmp isr_common_stub
 
 .global isr137
 isr137:
-  cli
   push 0
   push 137
   jmp isr_common_stub
 
 .global isr138
 isr138:
-  cli
   push 0
   push 138
   jmp isr_common_stub
 
 .global isr139
 isr139:
-  cli
   push 0
   push 139
   jmp isr_common_stub
 
 .global isr140
 isr140:
-  cli
   push 0
   push 140
   jmp isr_common_stub
 
 .global isr141
 isr141:
-  cli
   push 0
   push 141
   jmp isr_common_stub
 
 .global isr142
 isr142:
-  cli
   push 0
   push 142
   jmp isr_common_stub
 
 .global isr143
 isr143:
-  cli
   push 0
   push 143
   jmp isr_common_stub
 
 .global isr144
 isr144:
-  cli
   push 0
   push 144
   jmp isr_common_stub
 
 .global isr145
 isr145:
-  cli
   push 0
   push 145
   jmp isr_common_stub
 
 .global isr146
 isr146:
-  cli
   push 0
   push 146
   jmp isr_common_stub
 
 .global isr147
 isr147:
-  cli
   push 0
   push 147
   jmp isr_common_stub
 
 .global isr148
 isr148:
-  cli
   push 0
   push 148
   jmp isr_common_stub
 
 .global isr149
 isr149:
-  cli
   push 0
   push 149
   jmp isr_common_stub
 
 .global isr150
 isr150:
-  cli
   push 0
   push 150
   jmp isr_common_stub
 
 .global isr151
 isr151:
-  cli
   push 0
   push 151
   jmp isr_common_stub
 
 .global isr152
 isr152:
-  cli
   push 0
   push 152
   jmp isr_common_stub
 
 .global isr153
 isr153:
-  cli
   push 0
   push 153
   jmp isr_common_stub
 
 .global isr154
 isr154:
-  cli
   push 0
   push 154
   jmp isr_common_stub
 
 .global isr155
 isr155:
-  cli
   push 0
   push 155
   jmp isr_common_stub
 
 .global isr156
 isr156:
-  cli
   push 0
   push 156
   jmp isr_common_stub
 
 .global isr157
 isr157:
-  cli
   push 0
   push 157
   jmp isr_common_stub
 
 .global isr158
 isr158:
-  cli
   push 0
   push 158
   jmp isr_common_stub
 
 .global isr159
 isr159:
-  cli
   push 0
   push 159
   jmp isr_common_stub
 
 .global isr160
 isr160:
-  cli
   push 0
   push 160
   jmp isr_common_stub
 
 .global isr161
 isr161:
-  cli
   push 0
   push 161
   jmp isr_common_stub
 
 .global isr162
 isr162:
-  cli
   push 0
   push 162
   jmp isr_common_stub
 
 .global isr163
 isr163:
-  cli
   push 0
   push 163
   jmp isr_common_stub
 
 .global isr164
 isr164:
-  cli
   push 0
   push 164
   jmp isr_common_stub
 
 .global isr165
 isr165:
-  cli
   push 0
   push 165
   jmp isr_common_stub
 
 .global isr166
 isr166:
-  cli
   push 0
   push 166
   jmp isr_common_stub
 
 .global isr167
 isr167:
-  cli
   push 0
   push 167
   jmp isr_common_stub
 
 .global isr168
 isr168:
-  cli
   push 0
   push 168
   jmp isr_common_stub
 
 .global isr169
 isr169:
-  cli
   push 0
   push 169
   jmp isr_common_stub
 
 .global isr170
 isr170:
-  cli
   push 0
   push 170
   jmp isr_common_stub
 
 .global isr171
 isr171:
-  cli
   push 0
   push 171
   jmp isr_common_stub
 
 .global isr172
 isr172:
-  cli
   push 0
   push 172
   jmp isr_common_stub
 
 .global isr173
 isr173:
-  cli
   push 0
   push 173
   jmp isr_common_stub
 
 .global isr174
 isr174:
-  cli
   push 0
   push 174
   jmp isr_common_stub
 
 .global isr175
 isr175:
-  cli
   push 0
   push 175
   jmp isr_common_stub
 
 .global isr176
 isr176:
-  cli
   push 0
   push 176
   jmp isr_common_stub
 
 .global isr177
 isr177:
-  cli
   push 0
   push 177
   jmp isr_common_stub
 
 .global isr178
 isr178:
-  cli
   push 0
   push 178
   jmp isr_common_stub
 
 .global isr179
 isr179:
-  cli
   push 0
   push 179
   jmp isr_common_stub
 
 .global isr180
 isr180:
-  cli
   push 0
   push 180
   jmp isr_common_stub
 
 .global isr181
 isr181:
-  cli
   push 0
   push 181
   jmp isr_common_stub
 
 .global isr182
 isr182:
-  cli
   push 0
   push 182
   jmp isr_common_stub
 
 .global isr183
 isr183:
-  cli
   push 0
   push 183
   jmp isr_common_stub
 
 .global isr184
 isr184:
-  cli
   push 0
   push 184
   jmp isr_common_stub
 
 .global isr185
 isr185:
-  cli
   push 0
   push 185
   jmp isr_common_stub
 
 .global isr186
 isr186:
-  cli
   push 0
   push 186
   jmp isr_common_stub
 
 .global isr187
 isr187:
-  cli
   push 0
   push 187
   jmp isr_common_stub
 
 .global isr188
 isr188:
-  cli
   push 0
   push 188
   jmp isr_common_stub
 
 .global isr189
 isr189:
-  cli
   push 0
   push 189
   jmp isr_common_stub
 
 .global isr190
 isr190:
-  cli
   push 0
   push 190
   jmp isr_common_stub
 
 .global isr191
 isr191:
-  cli
   push 0
   push 191
   jmp isr_common_stub
 
 .global isr192
 isr192:
-  cli
   push 0
   push 192
   jmp isr_common_stub
 
 .global isr193
 isr193:
-  cli
   push 0
   push 193
   jmp isr_common_stub
 
 .global isr194
 isr194:
-  cli
   push 0
   push 194
   jmp isr_common_stub
 
 .global isr195
 isr195:
-  cli
   push 0
   push 195
   jmp isr_common_stub
 
 .global isr196
 isr196:
-  cli
   push 0
   push 196
   jmp isr_common_stub
 
 .global isr197
 isr197:
-  cli
   push 0
   push 197
   jmp isr_common_stub
 
 .global isr198
 isr198:
-  cli
   push 0
   push 198
   jmp isr_common_stub
 
 .global isr199
 isr199:
-  cli
   push 0
   push 199
   jmp isr_common_stub
 
 .global isr200
 isr200:
-  cli
   push 0
   push 200
   jmp isr_common_stub
 
 .global isr201
 isr201:
-  cli
   push 0
   push 201
   jmp isr_common_stub
 
 .global isr202
 isr202:
-  cli
   push 0
   push 202
   jmp isr_common_stub
 
 .global isr203
 isr203:
-  cli
   push 0
   push 203
   jmp isr_common_stub
 
 .global isr204
 isr204:
-  cli
   push 0
   push 204
   jmp isr_common_stub
 
 .global isr205
 isr205:
-  cli
   push 0
   push 205
   jmp isr_common_stub
 
 .global isr206
 isr206:
-  cli
   push 0
   push 206
   jmp isr_common_stub
 
 .global isr207
 isr207:
-  cli
   push 0
   push 207
   jmp isr_common_stub
 
 .global isr208
 isr208:
-  cli
   push 0
   push 208
   jmp isr_common_stub
 
 .global isr209
 isr209:
-  cli
   push 0
   push 209
   jmp isr_common_stub
 
 .global isr210
 isr210:
-  cli
   push 0
   push 210
   jmp isr_common_stub
 
 .global isr211
 isr211:
-  cli
   push 0
   push 211
   jmp isr_common_stub
 
 .global isr212
 isr212:
-  cli
   push 0
   push 212
   jmp isr_common_stub
 
 .global isr213
 isr213:
-  cli
   push 0
   push 213
   jmp isr_common_stub
 
 .global isr214
 isr214:
-  cli
   push 0
   push 214
   jmp isr_common_stub
 
 .global isr215
 isr215:
-  cli
   push 0
   push 215
   jmp isr_common_stub
 
 .global isr216
 isr216:
-  cli
   push 0
   push 216
   jmp isr_common_stub
 
 .global isr217
 isr217:
-  cli
   push 0
   push 217
   jmp isr_common_stub
 
 .global isr218
 isr218:
-  cli
   push 0
   push 218
   jmp isr_common_stub
 
 .global isr219
 isr219:
-  cli
   push 0
   push 219
   jmp isr_common_stub
 
 .global isr220
 isr220:
-  cli
   push 0
   push 220
   jmp isr_common_stub
 
 .global isr221
 isr221:
-  cli
   push 0
   push 221
   jmp isr_common_stub
 
 .global isr222
 isr222:
-  cli
   push 0
   push 222
   jmp isr_common_stub
 
 .global isr223
 isr223:
-  cli
   push 0
   push 223
   jmp isr_common_stub
 
 .global isr224
 isr224:
-  cli
   push 0
   push 224
   jmp isr_common_stub
 
 .global isr225
 isr225:
-  cli
   push 0
   push 225
   jmp isr_common_stub
 
 .global isr226
 isr226:
-  cli
   push 0
   push 226
   jmp isr_common_stub
 
 .global isr227
 isr227:
-  cli
   push 0
   push 227
   jmp isr_common_stub
 
 .global isr228
 isr228:
-  cli
   push 0
   push 228
   jmp isr_common_stub
 
 .global isr229
 isr229:
-  cli
   push 0
   push 229
   jmp isr_common_stub
 
 .global isr230
 isr230:
-  cli
   push 0
   push 230
   jmp isr_common_stub
 
 .global isr231
 isr231:
-  cli
   push 0
   push 231
   jmp isr_common_stub
 
 .global isr232
 isr232:
-  cli
   push 0
   push 232
   jmp isr_common_stub
 
 .global isr233
 isr233:
-  cli
   push 0
   push 233
   jmp isr_common_stub
 
 .global isr234
 isr234:
-  cli
   push 0
   push 234
   jmp isr_common_stub
 
 .global isr235
 isr235:
-  cli
   push 0
   push 235
   jmp isr_common_stub
 
 .global isr236
 isr236:
-  cli
   push 0
   push 236
   jmp isr_common_stub
 
 .global isr237
 isr237:
-  cli
   push 0
   push 237
   jmp isr_common_stub
 
 .global isr238
 isr238:
-  cli
   push 0
   push 238
   jmp isr_common_stub
 
 .global isr239
 isr239:
-  cli
   push 0
   push 239
   jmp isr_common_stub
 
 .global isr240
 isr240:
-  cli
   push 0
   push 240
   jmp isr_common_stub
 
 .global isr241
 isr241:
-  cli
   push 0
   push 241
   jmp isr_common_stub
 
 .global isr242
 isr242:
-  cli
   push 0
   push 242
   jmp isr_common_stub
 
 .global isr243
 isr243:
-  cli
   push 0
   push 243
   jmp isr_common_stub
 
 .global isr244
 isr244:
-  cli
   push 0
   push 244
   jmp isr_common_stub
 
 .global isr245
 isr245:
-  cli
   push 0
   push 245
   jmp isr_common_stub
 
 .global isr246
 isr246:
-  cli
   push 0
   push 246
   jmp isr_common_stub
 
 .global isr247
 isr247:
-  cli
   push 0
   push 247
   jmp isr_common_stub
 
 .global isr248
 isr248:
-  cli
   push 0
   push 248
   jmp isr_common_stub
 
 .global isr249
 isr249:
-  cli
   push 0
   push 249
   jmp isr_common_stub
 
 .global isr250
 isr250:
-  cli
   push 0
   push 250
   jmp isr_common_stub
 
 .global isr251
 isr251:
-  cli
   push 0
   push 251
   jmp isr_common_stub
 
 .global isr252
 isr252:
-  cli
   push 0
   push 252
   jmp isr_common_stub
 
 .global isr253
 isr253:
-  cli
   push 0
   push 253
   jmp isr_common_stub
 
 .global isr254
 isr254:
-  cli
   push 0
   push 254
   jmp isr_common_stub
 
 .global isr255
 isr255:
-  cli
   push 0
   push 255
   jmp isr_common_stub

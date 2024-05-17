@@ -13,13 +13,13 @@ clean:
 	@echo
 	@echo
 
-build: clean
+build: 
 	$(MAKE) headerlog header="Building"
-	bash -c "$(SCRIPTSDIR)/build.sh"
+	bash -c "$(SCRIPTSDIR)/iso.sh"
 	@echo
 	@echo
 
-iso: clean
+iso: 
 	$(MAKE) headerlog header="Building ISO"
 	bash -c "$(SCRIPTSDIR)/iso.sh"
 

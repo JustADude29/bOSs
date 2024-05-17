@@ -6,7 +6,6 @@
 
 ISRHandler ISRHandlers[256];
 
-
 void isrs_init_gates();
 
 void isrs_init() {
@@ -45,9 +44,6 @@ void fault_handler(registers *r) {
     printf("  esp:%x ebp:%x eip:%x eflags:%x cs:%x ds:%x ss:%x\n", r->kernelesp,
            r->ebp, r->eip, r->eflags, r->cs, r->ds, r->ss);
     printf("  Interrupt: %x ErrorCode: %x\n", r->int_no, r->err_code);
-    printf("SYSTEM HALTED!\n");
-    for (;;)
-      ;
   }
   terminal_setcolor(7, 0);
 }

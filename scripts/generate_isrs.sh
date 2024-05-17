@@ -34,7 +34,6 @@ echo "" >> $ISRS_GEN_ASM
 for i in $(seq 0 255); do
   echo ".global isr${i}" >> $ISRS_GEN_ASM
   echo "isr${i}:" >> $ISRS_GEN_ASM
-  echo "  cli" >> $ISRS_GEN_ASM
   if echo "$ISRS_WITH_ERROR_CODE" | grep -q "\b${i}\b"; then
     echo "" >> $ISRS_GEN_ASM
   else

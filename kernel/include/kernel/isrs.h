@@ -19,9 +19,9 @@ void isrs_init();
 
 void fault_handler(registers *r);
 
-void isr_register_handler(int interrupt, void (*handler)(registers *r));
+void isr_register_handler(int interrupt, ISRHandler handler);
 
-static const char *isr_exceptions[] = {
+static const char *const isr_exceptions[] = {
     // 0 Division by zero:
     "Division by zero",
     // 1 Debug Exception:

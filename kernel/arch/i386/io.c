@@ -1,13 +1,13 @@
 #include <kernel/io.h>
 
 unsigned char inportb(unsigned short _port) {
-  unsigned char rv;
-  __asm__ __volatile__("inb %1, %0" : "=a"(rv) : "dN"(_port));
-  return rv;
+  unsigned char ret;
+  __asm__ volatile("inb %w1, %b0" : "=a"(ret) : "Nd"(_port) : "memory");
+  return ret;
 }
 
 void outportb(unsigned short _port, unsigned char _data) {
-  __asm__ __volatile__("outb %1, %0" : : "dN"(_port), "a"(_data));
+  __asm__ volatile("outb %b0, %w1" : : "a"(_data), "Nd"(_port) : "memory");
 }
 
 void iowait() { outportb(0x80, 0); }

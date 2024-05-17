@@ -4,8 +4,8 @@
 
 extern void gdt_load();
 
-struct gdt_entry gdt_entries[5];
-struct gdt_ptr gdtp;
+gdt_entry gdt_entries[5];
+gdt_ptr gdtp;
 
 void set_gdt_gate(unsigned int num, unsigned int base, unsigned int limit,
                   unsigned char access, unsigned char gran) {
@@ -21,7 +21,7 @@ void set_gdt_gate(unsigned int num, unsigned int base, unsigned int limit,
 }
 
 void gdt_init() {
-  gdtp.limit = (sizeof(struct gdt_entry) * 5) - 1;
+  gdtp.limit = (sizeof(gdt_entry) * 5) - 1;
   gdtp.base = (unsigned int)&gdt_entries;
 
   set_gdt_gate(0, 0, 0, 0, 0);                // null segment
