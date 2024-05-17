@@ -17,7 +17,9 @@ void IRQ_Handler(registers *r) {
   if(irq_handlers[irq] != NULL) {
     irq_handlers[irq](r);
   } else {
+    terminal_setcolor(4, 0);
     printf("Unhandled IRQ: %d, ISR: %x, IRR: %x\n", irq, pic_isr, pic_irr);
+    terminal_setcolor(7, 0);
   }
 
   PIC_SendEndOfInterrupt(irq);

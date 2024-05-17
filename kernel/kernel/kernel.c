@@ -5,6 +5,8 @@
 #include <kernel/idt.h>
 #include <kernel/isrs.h>
 #include <kernel/irq.h>
+#include <kernel/pit.h>
+#include <kernel/keyboard.h>
 
 void kernel_main(void) {
   terminal_initialize();
@@ -12,7 +14,8 @@ void kernel_main(void) {
   idt_init();
   isrs_init();
   irq_init();
-  // cls();
+  timer_init();
+  keyboard_init();
 
   printf("\nHello bOSs\nKaise Ho aap?\n");
 }
