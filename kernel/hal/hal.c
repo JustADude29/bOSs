@@ -2,6 +2,7 @@
 
 void hal_init() {
   terminal_initialize();
+  paging_init();
   gdt_init();
   idt_init();
   isrs_init();

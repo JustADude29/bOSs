@@ -21,6 +21,7 @@ LIBS:=$(LIBS) -nostdlib -lk -lgcc
 ARCHDIR=arch/$(HOSTARCH)
 DRIVERDIR=drivers/drivers
 HALDIR=hal
+MEMDIR=memory
  
 include $(ARCHDIR)/make.config
  
@@ -37,11 +38,15 @@ kernel/kernel.o \
 DRIVER_OBJS=\
 $(KERNEL_DRIVER_OBJS) \
 
+MEMORY_OBJS=\
+$(KERNEL_MEMORY_OBJS) \
+
 OBJS=\
 $(ARCHDIR)/crti.o \
 $(ARCHDIR)/crtbegin.o \
 $(KERNEL_OBJS) \
 $(DRIVER_OBJS) \
+$(MEMORY_OBJS) \
 $(ARCHDIR)/crtend.o \
 $(ARCHDIR)/crtn.o \
  
@@ -51,6 +56,7 @@ $(ARCHDIR)/crti.o \
 $(ARCHDIR)/crtbegin.o \
 $(KERNEL_OBJS) \
 $(DRIVER_OBJS) \
+$(MEMORY_OBJS) \
 $(LIBS) \
 $(ARCHDIR)/crtend.o \
 $(ARCHDIR)/crtn.o \

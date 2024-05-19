@@ -8,6 +8,7 @@
 #include <kernel/isrs.h>
 #include <kernel/multiboot.h>
 #include <kernel/tty.h>
+#include <kernel/page.h>
 
 #include <drivers/keyboard.h>
 #include <drivers/pit.h>
