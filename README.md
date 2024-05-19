@@ -25,5 +25,8 @@ bOSs is currently a barebones OS that does nothing, dont waste your time on it
     - [x] Hardware Interrupts
 - [x] Timer
 - [x] Keyboard Input
-- [ ] Paging
+- [ ] Paging:
+    - [x] Simple Non-PAE paging
+    - [ ] PAE
+    - [ ] Page Allocator
 - [ ] Permissions
