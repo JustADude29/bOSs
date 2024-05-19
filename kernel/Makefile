@@ -14,12 +14,13 @@ BOOTDIR?=$(EXEC_PREFIX)/boot
 INCLUDEDIR?=$(PREFIX)/include
  
 CFLAGS:=$(CFLAGS) -ffreestanding -Wall -Wextra
-CPPFLAGS:=$(CPPFLAGS) -D__is_kernel -Iinclude -Idrivers
+CPPFLAGS:=$(CPPFLAGS) -D__is_kernel -Iinclude -Idrivers -Ihal
 LDFLAGS:=$(LDFLAGS)
 LIBS:=$(LIBS) -nostdlib -lk -lgcc
  
 ARCHDIR=arch/$(HOSTARCH)
 DRIVERDIR=drivers/drivers
+HALDIR=hal
  
 include $(ARCHDIR)/make.config
  
@@ -30,6 +31,7 @@ LIBS:=$(LIBS) $(KERNEL_ARCH_LIBS)
  
 KERNEL_OBJS=\
 $(KERNEL_ARCH_OBJS) \
+$(KERNEL_HAL_OBJS) \
 kernel/kernel.o \
 
 DRIVER_OBJS=\

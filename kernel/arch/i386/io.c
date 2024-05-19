@@ -11,3 +11,9 @@ void outportb(unsigned short _port, unsigned char _data) {
 }
 
 void iowait() { outportb(0x80, 0); }
+
+void panic(char *error) {
+  terminal_setcolor(4, 0);
+  puts(error);
+  terminal_setcolor(7, 0);
+}

@@ -1,23 +1,10 @@
 #include <stdio.h>
 
-#include <kernel/gdt.h>
-#include <kernel/tty.h>
-#include <kernel/idt.h>
-#include <kernel/isrs.h>
-#include <kernel/irq.h>
+#include <hal.h>
 
-#include <drivers/pit.h>
-#include <drivers/keyboard.h>
-
-void kernel_main(void) {
-  terminal_initialize();
-  gdt_init();
-  idt_init();
-  isrs_init();
-  irq_init();
-  timer_init();
-  keyboard_init();
-
+void kernel_main(multiboot_info_t *mbd, unsigned int magic) {
+  hal_init();
+  // hal_detect_memory(mbd, magic);
+  
   printf("\nHello bOSs\nKaise Ho aap?\n");
 }
-
