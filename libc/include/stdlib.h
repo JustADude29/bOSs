@@ -9,6 +9,9 @@ extern "C" {
 
 __attribute__((__noreturn__)) void abort(void);
 
+__attribute__((__noreturn__)) void itoa(unsigned int i, unsigned base,
+                                        char *buf);
+
 #ifdef __cplusplus
 }
 #endif
