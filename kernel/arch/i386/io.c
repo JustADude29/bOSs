@@ -16,4 +16,6 @@ void panic(char *error) {
   terminal_setcolor(4, 0);
   puts(error);
   terminal_setcolor(7, 0);
+  DisableInterrupts();
+  __asm("hlt") ;
 }

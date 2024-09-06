@@ -2,11 +2,11 @@
 
 void hal_init() {
   terminal_initialize();
-  paging_init();
   gdt_init();
   idt_init();
   isrs_init();
   irq_init();
+  paging_init();
   timer_init();
   keyboard_init();
 }
@@ -26,11 +26,11 @@ void hal_detect_memory(multiboot_info_t *mbd, unsigned int magic) {
     multiboot_memory_map_t *mmmt =
         (multiboot_memory_map_t *)(mbd->mmap_addr + i);
 
-    printf("Start Addr: %x | Length: %x | Size: %x | Type: %d\n", mmmt->addr,
-           mmmt->len, mmmt->size, mmmt->type);
+    printf("Start Addr: 0x%lx | Length: %lu | Size: %d | Type: %d\n",
+           mmmt->addr, mmmt->len, mmmt->size, mmmt->type);
 
     if (mmmt->type == MULTIBOOT_MEMORY_AVAILABLE) {
-      // memory block available
+      printf("Memory available!\n");
     }
   }
 }

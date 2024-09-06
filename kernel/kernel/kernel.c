@@ -2,9 +2,8 @@
 
 #include <hal.h>
 
-void kernel_main(multiboot_info_t *mbd, unsigned int magic) {
+void kernel_main() {
   hal_init();
-  // hal_detect_memory(mbd, magic);
   
   printf("\nHello bOSs\nKaise Ho aap?\n");
 }

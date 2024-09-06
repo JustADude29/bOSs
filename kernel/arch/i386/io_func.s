@@ -6,8 +6,8 @@ EnableInterrupts:
   sti
   ret
 
-.global DisableInterrutps
-DisableInterrutps:
+.global DisableInterrupts
+DisableInterrupts:
   cli
   ret
 

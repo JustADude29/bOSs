@@ -22,12 +22,14 @@ stack_top:
 # The kernel entry point.
 .section .text
 .global _start
+.global multiboot_info
+.global magic_number
 .type _start, @function
 _start:
 	movl $stack_top, %esp
 
-  push %eax
-  push %ebx
+  movl %eax, magic_number
+  movl %ebx, multiboot_info
 
 	# Call the global constructors.
 	call _init

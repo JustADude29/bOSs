@@ -50,6 +50,77 @@ static int int_to_string(int i, char *buf, unsigned base) {
   return top;
 }
 
+static int long_to_string(long long i, char *buf, unsigned base) {
+  char tbuf[64];
+  char bchars[] = {'0', '1', '2', '3', '4', '5', '6', '7',
+                   '8', '9', 'A', 'B', 'C', 'D', 'E', 'F'};
+  int pos = 0;
+  int opos = 0;
+  int top = 0;
+  int negative = 0;
+  memset(tbuf, 0, 64);
+
+  if (i < 0) {
+    negative = 1;
+    i = -i;
+  }
+
+  if (i == 0 || base > 16) {
+    buf[0] = '0';
+    buf[1] = '\0';
+    return 1;
+  }
+
+  while (i != 0) {
+    tbuf[pos] = bchars[i % base];
+    pos++;
+    i /= base;
+  }
+  top = pos--;
+
+  if (negative)
+    buf[opos++] = '-';
+
+  for (; opos < top; pos--, opos++)
+    buf[opos] = tbuf[pos];
+  buf[opos] = '\0';
+
+  return top;
+}
+
+static int ul_to_string(unsigned long long i, char *buf, unsigned base) {
+  char tbuf[64];
+  char bchars[] = {'0', '1', '2', '3', '4', '5', '6', '7',
+                   '8', '9', 'A', 'B', 'C', 'D', 'E', 'F'};
+  int pos = 0;
+  int opos = 0;
+  int top = 0;
+  int negative = 0;
+  memset(tbuf, 0, 64);
+
+  if (i == 0 || base > 16) {
+    buf[0] = '0';
+    buf[1] = '\0';
+    return 1;
+  }
+
+  while (i != 0) {
+    tbuf[pos] = bchars[i % base];
+    pos++;
+    i /= base;
+  }
+  top = pos--;
+
+  if (negative)
+    buf[opos++] = '-';
+
+  for (; opos < top; pos--, opos++)
+    buf[opos] = tbuf[pos];
+  buf[opos] = '\0';
+
+  return top;
+}
+
 int printf(const char *restrict format, ...) {
   va_list parameters;
   va_start(parameters, format);
@@ -107,7 +178,7 @@ int printf(const char *restrict format, ...) {
     case 'd': {
       format++;
       int num = va_arg(parameters, int);
-      char num_str[12] = {0}; // Maximum 12 characters for an integer
+      char num_str[12] = {0};
       size_t len = int_to_string(num, num_str, 10);
       if (maxrem < len) {
         // TODO: Set errno to EOVERFLOW.
@@ -118,10 +189,55 @@ int printf(const char *restrict format, ...) {
       written += len;
       break;
     }
+    case 'l': {
+      format++;
+      switch (*format) {
+      case 'u': {
+        format++;
+        unsigned long long num = va_arg(parameters, unsigned long long);
+        char num_str[20] = {0};
+        size_t len = ul_to_string(num, num_str, 10);
+        if (maxrem < len) {
+          return -1;
+        }
+        if (!print(num_str, len))
+          return -1;
+        written += len;
+        break;
+      }
+      case 'd': {
+        format++;
+        long long num = va_arg(parameters, long long);
+        char num_str[20] = {0};
+        size_t len = long_to_string(num, num_str, 10);
+        if (maxrem < len) {
+          return -1;
+        }
+        if (!print(num_str, len))
+          return -1;
+        written += len;
+        break;
+      }
+      case 'x': {
+        format++;
+        unsigned long long num = va_arg(parameters, unsigned long long);
+        char num_str[20] = {0};
+        size_t len = ul_to_string(num, num_str, 16);
+        if (maxrem < len) {
+          return -1;
+        }
+        if (!print(num_str, len))
+          return -1;
+        written += len;
+        break;
+      }
+      }
+      break;
+    }
     case 'x': {
       format++;
       int num = va_arg(parameters, int);
-      char num_str[12] = {0}; // Maximum 12 characters for an integer
+      char num_str[12] = {0};
       size_t len = int_to_string(num, num_str, 16);
       if (maxrem < len) {
         // TODO: Set errno to EOVERFLOW.
