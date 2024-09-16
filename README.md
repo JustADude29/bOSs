@@ -105,7 +105,7 @@ To build and run **bOSs**, you'll need the following tools installed:
 
 ### Keyboard and Timer:
 
-![vid](assets/vid.webm)
+![vid](assets/vid.gif)
 
 ---
 
