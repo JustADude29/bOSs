@@ -1,6 +1,7 @@
 # bOSs
 
-bOSs is currently a barebones OS that does nothing, dont waste your time on it
+bOSs is a custom bootable OS written in C.
+Currently capable of reading memory, allocating pages with a working keyboard driver and a PIT.
 
 ## Requirements:
 
@@ -17,16 +18,29 @@ bOSs is currently a barebones OS that does nothing, dont waste your time on it
 - Run `make clean` to clean
 
 ## Milestones:
+
 - [x] Standard Library
 - [x] Terminal Printing
 - [x] Implement GDT
 - [x] Interrupts:
-    - [x] CPU Interrupts
-    - [x] Hardware Interrupts
+  - [x] CPU Interrupts
+  - [x] Hardware Interrupts
 - [x] Timer
 - [x] Keyboard Input
-- [ ] Paging:
-    - [x] Simple Non-PAE paging
-    - [x] ~~PAE~~ (Will Merge if needed later)
-    - [ ] Page Allocator
-- [ ] Permissions
+- [x] Paging:
+  - [x] Simple Non-PAE paging
+  - [x] Page Allocator
+
+## Images:
+
+### Grub Menu:
+
+![Grub Menu](assets/grub.png)
+
+### Home:
+
+![Home](assets/boot.png)
+
+### Keyboard and Timer:
+
+![vid](assets/vid.webm)
