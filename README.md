@@ -56,39 +56,39 @@ To build and run **bOSs**, you'll need the following tools installed:
 
 ## 🎯 Milestones:
 
-### - Core Features:
+- ### Core Features:
 
-    - **Standard Library**:
+  - **Standard Library**:
     Implemented essential functions for the OS's standard library, written in C.
 
-    - **Terminal Output**:
+  - **Terminal Output**:
     Basic terminal output and printing functionality for user interaction.
 
-    - **Global Descriptor Table (GDT)**:
+  - **Global Descriptor Table (GDT)**:
     Implemented GDT for memory segmentation, with part of the setup written in Assembly for low-level control.
 
-### - Interrupt Handling:
+- ### Interrupt Handling:
 
-    - **CPU Interrupts**:
+  - **CPU Interrupts**:
     Configured both software and hardware interrupts using C and Assembly.
 
-    - **Hardware Interrupts**:
+  - **Hardware Interrupts**:
     Enabled interrupt handling for external devices like the keyboard using Assembly to interface with the PIC (Programmable Interrupt Controller).
 
-### - Peripheral Support:
+- ### Peripheral Support:
 
-    - **Timer (PIT)**:
+  - **Timer (PIT)**:
     Integrated a Programmable Interval Timer (PIT) for task scheduling and system clock management.
 
-    - **Keyboard Input**:
+  - **Keyboard Input**:
     Implemented a working keyboard driver to capture user input using interrupts, with some portions written in Assembly for precise hardware communication.
 
-### - Memory Management:
+- ### Memory Management:
 
-    - **Paging**:
+  - **Paging**:
     Simple non-PAE paging for memory protection and management.
 
-    - **Page Allocator**:
+  - **Page Allocator**:
     Efficient memory page allocation for kernel processes, leveraging both C and Assembly for performance.
 
 ---
